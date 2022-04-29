@@ -40,3 +40,56 @@ Concurrency
 
     Modify the demo-15.go in such way that  the "genEvenNos" will keep generating even numbers until the user hits the ENTER key
     NOTE : Do not accept user input in the genEvenNos() function
+
+GRPC
+    protocol buffers
+    http2
+    multi language support
+    Communication Patterns
+        Request & Response
+        Client Streaming (multiple requests & one response)
+        Server Streaming (one request & multiple responses)
+        Bi-directional Streaming (multiple requests & multiple responses)
+        
+Process
+    Define Schema (in protocol buffers)
+        Service Contract
+        Operation Contract
+        Data Contract
+    Generate code (protoc)
+        Proxy (client)
+        Stub (server)
+    Implement the Service Contract
+        Service Implementation
+    Host the server
+
+    Installation
+        go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+        (when the above is installed, executables are created in the gopath/bin folder. Make sure this path is set in environment variables)
+
+        Windows
+            Install the binaries from https://github.com/protocolbuffers/protobuf/releases/
+
+        Mac
+            brew install protoc-gen-go
+            brew install protoc-gen-go-grpc
+
+To generate the proxy and stub
+    protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/service.proto
+
+Http Services
+    - platform APIs
+    - Libraries
+        Routing
+
+    - JWT middleware for Gin
+        https://github.com/appleboy/gin-jwt
+
+Web Socket
+    HTML5 standard
+    Supported in all the browsers
+
+Benchmarking
+     go test -bench=. ./... -benchmem
